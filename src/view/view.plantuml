@@ -1,0 +1,81 @@
+@startuml
+
+title __VIEW's Class Diagram__\n
+
+
+    namespace view {
+      class view.BoardPanel {
+          + tiles : ArrayList<TileButtons>
+          - board_size : double
+          - button_size : int
+          - entrance : ArrayList<JLabel>
+          - imageContainer : JLabel
+          - layeredPane : JLayeredPane
+          + add_entrance_tile()
+          + add_tile()
+          ~ BoardPanel()
+      }
+  }
+  
+
+
+    namespace view {
+      class view.GUI {
+          + characters : ArrayList<JButton>
+          + chosen_tiles : int
+          + collection : JButton
+          + draw_tiles : JButton
+          + end_turn : JButton
+          + info : JLabel
+          - board : JPanel
+          - board_size : double
+          {static} - instance : GUI
+          - main_frame : JFrame
+          - names : String[]
+          - number_of_players : int
+          - players_collection : JFrame
+          + display_winner()
+          {static} + getInstance()
+          + getNames()
+          + getNumber_of_players()
+          + view_collection()
+          - GUI()
+          - displayErrorMessage()
+          - loadGame()
+          - registerNames()
+          - registerNumberofPlayers()
+          - saveGame()
+          - startGame()
+          - startSinglePlayerGame()
+      }
+    }
+
+  
+
+    namespace view {
+      class view.TileButton {
+          - name : String
+          - tile_count : int
+          - tile_label : JLabel
+          - tiles : ArrayList<FindingTile>
+          - type : String
+          + TileButtons()
+          + add_tile()
+          + getTileName()
+          + getTile_count()
+          + getTile_label()
+          + getType()
+          + pop_tile()
+          + setLabelBounds()
+      }
+  }
+  
+
+  view.TileButton -up-o view.BoardPanel : are contained
+  view.BoardPanel -right-|> javax.swing.JPanel
+  view.GUI o-right- view.BoardPanel : table
+  view.TileButton -right-|> javax.swing.JButton
+
+
+
+@enduml

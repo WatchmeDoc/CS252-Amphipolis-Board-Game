@@ -1,0 +1,29 @@
+@startuml
+
+title __CONTROLLER's Class Diagram__\n
+
+    namespace controller {
+      class controller.GameFlow {
+          - NoOfPlayers : int
+          - curr_players : int
+          - gameStatus : String
+          {static} - instance : GameFlow
+          - single_player_mode : boolean
+          - used_ability : boolean
+          + check_game()
+          {static} + getInstance()
+          + getPlayerName()
+          + next()
+          + play()
+          + setInfo()
+          + update_tiles()
+          - GameFlow()
+          - RegisterPlayer()
+          - initialize()
+          - steal()
+      }
+  }
+  
+
+
+@enduml

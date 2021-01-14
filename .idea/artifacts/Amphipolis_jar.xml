@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Amphipolis:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Amphipolis_jar</output-path>
+    <root id="archive" name="Amphipolis.jar">
+      <element id="module-output" name="Amphipolis" />
+    </root>
+  </artifact>
+</component>

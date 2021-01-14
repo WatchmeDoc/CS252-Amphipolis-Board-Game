@@ -1,0 +1,309 @@
+@startuml
+
+title __MODEL's Class Diagram__\n
+
+  namespace model {
+      enum AmphoraColor {
+        BLUE
+        BROWN
+        GREEN
+        PURPLE
+        RED
+        YELLOW
+     }
+  }
+  
+
+  namespace model {
+      class model.AmphoraTile {
+          + getColor()
+          ~ AmphoraTile()
+      }
+    }
+  
+
+  namespace model {
+      class model.Archaeologist {
+          {static} + description : String
+          ~ Archaeologist()
+      }
+
+  }
+  
+
+  namespace model {
+      class model.Assistant {
+          {static} + description : String
+          ~ Assistant()
+      }
+
+  }
+  
+
+  namespace model {
+      class model.Bag {
+          {static} + SINGLE_PLAYER_ENTRANCE_TILES : int
+          {static} ~ ADULT_SKELETON_PARTS : int
+          {static} ~ AMPHORA_TILES_PER_COLOR : int
+          {static} ~ CHILD_SKELETON_PARTS : int
+          {static} ~ LANDSLIDE_TILES : int
+          {static} ~ MOSAICS_PER_COLOR : int
+          {static} ~ STATUES_PER_CATEGORY : int
+          - first_tiles : FindingTile[]
+          {static} - instance : Bag
+          - tiles : ArrayList<Tile>
+          + entrance_fillings()
+          + getFirstTiles()
+          {static} + getInstance()
+          + getTile()
+          - Bag()
+      }
+
+  }
+  
+
+  namespace model {
+      class model.Board {
+          {static} + MAX_CHOSEN_TILES_PER_SORTING_AREA : int
+          {static} + MAX_ENTRANCE_TILES : int
+          {static} + MAX_PLAYERS : int
+          {static} + SORTING_AREAS_COUNT : int
+          + TILES_PER_ROUND : int
+          {static} - Entrance : LandslideTile[]
+          - EntranceTiles : int
+          - NowPlaying : int
+          {static} - SortingAreas : ArrayList<ArrayList<FindingTile>>
+          {static} - instance : Board
+          - players : ArrayList<Player>
+          + PlaceTiles()
+          + addPlayer()
+          + addTile()
+          + addTile()
+          + addTile()
+          + addTile()
+          + addTile()
+          + check_entrance()
+          + check_winner()
+          + create_thief()
+          + getEntrance()
+          {static} + getInstance()
+          + getNowPlaying()
+          + getPlayerName()
+          + getPlayers()
+          + getSortingAreas()
+          + initialize_sorting_areas()
+          + nextPlayer()
+          + pickTile()
+          + removeTile()
+          + removeTile()
+          + removeTile()
+          + removeTile()
+          + stealTile()
+          - Board()
+      }
+  }
+  
+
+  namespace model {
+      class model.CaryatidTile {
+          ~ CaryatidTile()
+      }
+
+  }
+  
+
+  namespace model {
+      abstract class model.Character {
+          {static} + TOTAL_CHARACTERS : int
+          - usedAbility : boolean
+          + getColor()
+          + getUsedAbility()
+          + useAbility()
+          ~ Character()
+      }
+
+  }
+  
+
+  namespace model {
+      enum CharacterColor {
+        BLACK
+        BLUE
+        RED
+        YELLOW
+      }
+
+  }
+  
+
+  namespace model {
+      class model.Digger {
+          {static} + description : String
+          ~ Digger()
+      }
+
+  }
+  
+
+  namespace model {
+      abstract class model.FindingTile {
+          {static} + AMPHORA_COLORS : int
+          {static} + AMPHORA_TILES : int
+          {static} + MOSAIC_COLORS : int
+          {static} + MOSAIC_TILES : int
+          {static} + SKELETON_TILES : int
+          {static} + STATUE_TILES : int
+      }
+
+  }
+  
+
+
+  namespace model {
+      class model.LandslideTile {
+          ~ LandslideTile()
+      }
+
+  }
+  
+
+  namespace model {
+      enum MosaicColor {
+        GREEN
+        RED
+        YELLOW
+      }
+
+  }
+  
+
+  namespace model {
+      class model.MosaicTile {
+          + getColor()
+          ~ MosaicTile()
+      }
+
+  }
+
+  
+
+  namespace model {
+      class model.Player {
+          {static} + ARCHAEOLOGIST : int
+          {static} + ASSISTANT : int
+          {static} + DIGGER : int
+          {static} + PROFESSOR : int
+          + collected_tiles : ArrayList<ArrayList<FindingTile>>
+          - characters : Character[]
+          {static} - collected_caryatid : ArrayList<Integer>
+          {static} - collected_sphinx : ArrayList<Integer>
+          {static} - color : CharacterColor[]
+          - name : String
+          - playerID : int
+          - points : int
+          + getAmphoraCount()
+          + getLast_picked()
+          + getMosaicCount()
+          + getName()
+          + getNotUsedAbilities()
+          + getPoints()
+          + getSkeletonCount()
+          + getStatueCount()
+          + getUsedAbilities()
+          + pickTile()
+          + pickTile()
+          + pickTile()
+          + pickTile()
+          + pickTile()
+          + use_ability()
+          ~ Player()
+          - calculateAmphoraPoints()
+          - calculateMosaicPoints()
+          - calculatePoints()
+          - calculateSkeletonPoints()
+          - calculateStatuePoints()
+      }
+
+  }
+  
+
+  namespace model {
+      class model.Professor {
+          {static} + description : String
+          ~ Professor()
+      }
+  }
+  
+
+  namespace model {
+      class model.SkeletonTile {
+          - isAdultSkeleton : boolean
+          - isUpperBody : boolean
+          + getIsAdultSkeleton()
+          + getIsUpperBody()
+          ~ SkeletonTile()
+      }
+
+  }
+  
+
+  namespace model {
+      class model.SphinxTile {
+          ~ SphinxTile()
+      }
+
+  }
+  
+
+  namespace model {
+      abstract class model.StatueTile {
+          ~ StatueTile()
+      }
+
+  }
+  
+
+  namespace model {
+      abstract class model.Tile {
+          # Type : String
+          # tile_name : String
+          + getTileName()
+          + getType()
+      }
+
+  }
+  
+
+
+  
+
+  model.AmphoraTile -up-|> model.FindingTile
+  model.AmphoraTile o-- model.AmphoraColor : color
+  model.Archaeologist -up-|> model.Character
+  model.Assistant -up-|> model.Character
+  model.Board o-left- model.Player : Are Registered by
+  model.Bag o-right- model.Tile
+  model.Board o-right- model.Bag : provides tiles
+  model.CaryatidTile -up-|> model.StatueTile
+  model.Character o-- model.CharacterColor : color
+  model.Digger -up-|> model.Character
+  model.FindingTile -up-|> model.Tile
+  model.LandslideTile -up-|> model.Tile
+  model.MosaicTile -up-|> model.FindingTile
+  model.MosaicTile o-- model.MosaicColor : color
+  model.Player o-- model.FindingTile : Collection
+  model.Player o-- model.Character
+  model.Professor -up-|> model.Character
+  model.SkeletonTile -up-|> model.FindingTile
+  model.SphinxTile -up-|> model.StatueTile
+  model.StatueTile -up-|> model.FindingTile
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

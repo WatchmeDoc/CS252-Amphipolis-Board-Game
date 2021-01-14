@@ -16,6 +16,5 @@ and everything will be set. I included a default main function for testing purpo
 >> Please DO NOT UNDER ANY CIRCUMSTANCE MAKE ANY NAME CHANGES to the folder 
 "images_2020" as the file names are used pretty much everywhere. You may add a different image
 under the same name though for custom textures :))
->> Do not forget to include from .idea > artifacts > json-simple-1.1.1.jar file
 
 Enjoy the game :)
