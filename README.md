@@ -16,7 +16,6 @@ allowed by the game rules.
 
 
 # Run Specifications:
-
 - You only have to run main for the game to start, but all in all you just want someone
 to create an instance of the controller. Should this happen, the game will start properly
 and everything will be set. I included a default main function for testing purposes.
@@ -28,7 +27,10 @@ under the same name though for custom textures :))
 - GUI is properly adjusted to work on any monitor resolution - every component is dynamically placed
 based on that, althgough I haven't had the chance to test it out on different resolutions other than 1920x1080p yet.
 
-# Note:
-Remember to add **json-simple-1.1.1.jar** file from **.idea > artifacts** to your IDE before building the project.
+# Notes:
+- Remember to add **json-simple-1.1.1.jar** file from **.idea > artifacts** to your IDE before building the project.
+
+- Java version (JDK): Java Platform SE 8 or above
+
 
 Enjoy the game :)
