@@ -1,8 +1,6 @@
 package model;
 
 import org.json.simple.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -39,7 +37,9 @@ public class Bag {
     /**
      * ArrayList containing all tiles currently in the bag.
      */
-    private final ArrayList<Tile> tiles = new ArrayList<>();
+    private final ArrayList<Tile> tiles = new ArrayList<>(CHILD_SKELETON_PARTS*2 + ADULT_SKELETON_PARTS *2 + STATUES_PER_CATEGORY*2 +
+            MOSAICS_PER_COLOR*MosaicColor.values().length +
+            AMPHORA_TILES_PER_COLOR * AmphoraColor.values().length + LANDSLIDE_TILES);
     /**
      * Indicates the number of Landslide Tiles that will be pre placed in single player mode.
      */
@@ -132,7 +132,7 @@ public class Bag {
 
     /**
      * Getter for the first tiles which initialize the board.
-     * @return
+     * @return FindingTiles Array containing the first tiles which initialize the board.
      */
     public FindingTile[] getFirstTiles(){
         return first_tiles;

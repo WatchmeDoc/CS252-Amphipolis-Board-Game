@@ -15,7 +15,7 @@ public class BoardPanel  extends JPanel {
     private JLayeredPane layeredPane;
     private JLabel imageContainer = new JLabel();
     public ArrayList<TileButton> tiles;
-    private ArrayList<JLabel> entrance = new ArrayList<>(0);
+    private ArrayList<JLabel> entrance = new ArrayList<>(Board.MAX_ENTRANCE_TILES);
     private final double board_size;
     private final int button_size;
 
@@ -25,7 +25,7 @@ public class BoardPanel  extends JPanel {
     BoardPanel(){
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         board_size = dim.height/1.30;
-        button_size = (int) board_size/12;;
+        button_size = (int) board_size/12;
         try {
             this.imageContainer.setIcon(new ImageIcon(
                     ImageIO.read(new File(
@@ -41,7 +41,7 @@ public class BoardPanel  extends JPanel {
                 "amphora_green", "amphora_purple", "amphora_red", "amphora_yellow",  "skeleton_big_top", "skeleton_small_top",
                 "skeleton_big_bottom", "skeleton_small_bottom"};
         int N = tile_names.length;
-        tiles = new ArrayList<>(0);
+        tiles = new ArrayList<>(N);
 
         for(int i = 0; i < N; i++){
             try {
@@ -103,6 +103,6 @@ public class BoardPanel  extends JPanel {
                 tile.pop_tile();
             }
         });
-        entrance = new ArrayList<>(0);
+        entrance.clear();
     }
 }

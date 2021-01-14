@@ -43,28 +43,25 @@ public class GUI {
             number_of_players = registerNumberofPlayers();
             names = registerNames();
         }
-        while(true){
-            if(i == number_of_players){
-                break;
-            }
-            if(names[i].equals("")){
+        while (i != number_of_players) {
+            if (names[i].equals("")) {
                 i = 0;
                 displayErrorMessage("Cannot register a player with empty name!");
                 names = registerNames();
-                while(names == null){
+                while (names == null) {
                     number_of_players = registerNumberofPlayers();
                     names = registerNames();
                 }
-            } else if(names[i].equals("Fox the Thief")){
+            } else if (names[i].equals("Fox the Thief")) {
                 i = 0;
                 displayErrorMessage("Ah, I see you found the secret name. Congrats, now you know my name, " +
                         "but if you speak to anyone of this, I will hurt Dora!");
                 names = registerNames();
-                while(names == null){
+                while (names == null) {
                     number_of_players = registerNumberofPlayers();
                     names = registerNames();
                 }
-            } else{
+            } else {
                 i++;
             }
         }
@@ -92,8 +89,8 @@ public class GUI {
         navigation.add(info, gbc);
         // NOTE THE ORDER MUST MATCH PLAYER'S ARRAYLIST ORDER
         String[] charact = {"assistant", "archaeologist", "digger", "professor"};
-        characters = new ArrayList<>(0);
-        for(i = 0; i < 4; i++){
+        characters = new ArrayList<>(charact.length);
+        for(i = 0; i < charact.length; i++){
             BufferedImage hero = null;
             try {
                 hero = ImageIO.read(new File("images_2020\\" + charact[i] + ".png"));
@@ -202,7 +199,7 @@ public class GUI {
         Object selected = JOptionPane.showInputDialog(frame,
                 null,
                 "Choose number of players:",
-                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
                 null, players,
                 players[3]);
 

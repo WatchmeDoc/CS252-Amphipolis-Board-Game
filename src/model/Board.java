@@ -53,7 +53,7 @@ public class Board {
      * ArrayList with registered players. The play priority is the same with their registration order.
      * @inv players.size() less or equal to MAX_PLAYERS.
      */
-    private final ArrayList<Player> players = new ArrayList<Player>(0);
+    private final ArrayList<Player> players = new ArrayList<>(MAX_PLAYERS);
     /**
      * Bag Instance connected with the board.
      */
@@ -68,9 +68,9 @@ public class Board {
      */
     private Board(){
         Entrance = new LandslideTile[MAX_ENTRANCE_TILES];
-        SortingAreas = new ArrayList<> (0);
+        SortingAreas = new ArrayList<> (SORTING_AREAS_COUNT);
         for(int i = 0; i < SORTING_AREAS_COUNT; i++){
-            SortingAreas.add(new ArrayList<>(0));
+            SortingAreas.add(new ArrayList<>());
         }
         EntranceTiles = 0;
     }
@@ -469,11 +469,9 @@ public class Board {
     public void reset(){
         Entrance = new LandslideTile[MAX_ENTRANCE_TILES];
         EntranceTiles = 0;
-        SortingAreas = new ArrayList<> (0);
         for(int i = 0; i < SORTING_AREAS_COUNT; i++){
-            SortingAreas.add(new ArrayList<>(0));
+            SortingAreas.get(i).clear();
         }
-        EntranceTiles = 0;
         players.clear();
         bag.reset();
     }
