@@ -5,6 +5,7 @@ import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 
 import static model.FindingTile.*;
 
@@ -15,14 +16,10 @@ public class Board {
      */
     private static Board instance = null;
     /**
-     * Entrance array that contains all placed Landslide tiles.
-     */
-    private LandslideTile[] Entrance;
-    /**
      * Arraylist of 4 ArrayLists for each Finding tile category.
      * For each category there is a specified TYPE_TILES final static variable.
      */
-    private static ArrayList<ArrayList<FindingTile>> SortingAreas;
+    private static ArrayList<LinkedList<FindingTile>> SortingAreas;
     /**
      * Maximum allowed players.
      * @inv MAX_PLAYERS == CharacterColor.values().length;
@@ -67,10 +64,9 @@ public class Board {
      * Constructor for singleton class, therefore is private.
      */
     private Board(){
-        Entrance = new LandslideTile[MAX_ENTRANCE_TILES];
         SortingAreas = new ArrayList<> (SORTING_AREAS_COUNT);
         for(int i = 0; i < SORTING_AREAS_COUNT; i++){
-            SortingAreas.add(new ArrayList<>());
+            SortingAreas.add(new LinkedList<>());
         }
         EntranceTiles = 0;
     }
@@ -152,7 +148,7 @@ public class Board {
         if(EntranceTiles == MAX_ENTRANCE_TILES){
             return false;
         }
-        Entrance[EntranceTiles++] = input;
+        EntranceTiles++;
         return true;
     }
 
@@ -436,7 +432,7 @@ public class Board {
      * Getter for sorting areas arraylist
      * @return SortingAreas ArrayList
      */
-    public ArrayList<ArrayList<FindingTile>> getSortingAreas(){
+    public ArrayList<LinkedList<FindingTile>> getSortingAreas(){
         return SortingAreas;
     }
 
@@ -467,7 +463,6 @@ public class Board {
      * @post board must be like new after this operation, as well as the bag.
      */
     public void reset(){
-        Entrance = new LandslideTile[MAX_ENTRANCE_TILES];
         EntranceTiles = 0;
         for(int i = 0; i < SORTING_AREAS_COUNT; i++){
             SortingAreas.get(i).clear();

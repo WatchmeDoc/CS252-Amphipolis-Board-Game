@@ -103,6 +103,7 @@ public class BoardPanel  extends JPanel {
                 tile.pop_tile();
             }
         });
+        entrance.forEach(tile -> layeredPane.remove(tile));
         entrance.clear();
     }
 }
